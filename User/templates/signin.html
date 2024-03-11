@@ -1,0 +1,166 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join the Community!</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #e0e0e0; /* Light gray background */
+      /* Apply background image */
+      background-image: url('https://www.metacompliance.com/wp-content/uploads/2021/03/Password-Policy-Best-Practices-2021.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .container {
+      /* White container */
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 4px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 400px; /* Adjust width as needed */
+      height: 50px;
+      overflow: hidden; 
+    }
+    
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 5px;
+  color: #333; /* Darker gray for main text */
+}
+
+p {
+  font-size: 16px;
+  color: #666; /* Lighter gray for descriptive text */
+  margin-bottom: 10px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Spacing between form elements */
+}
+
+label {
+  font-weight: bold; /* Bold labels for better readability */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  width: 100%;
+}
+
+button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  background-color: #3498db; /* Blue button */
+  color: #fff; /* White text */
+  font-weight: bold;
+  transition: background-color 0.2s ease-in-out; /* Smooth hover effect */
+}
+
+button:hover {
+  background-color: #2980b9; /* Darker blue on hover */
+}
+.container {
+    /* ... other styles ... */
+    height: 500px; /* Adjust the height as needed */
+    overflow-y: auto; /* Enable vertical scrollbar only if needed */
+}
+
+footer {
+  text-align: center;
+  margin-top: 20px;
+}
+.background-image {
+    position: fixed; /* Keep the image in place while scrolling */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url('');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: -1; /* Place the image behind other content */
+}
+
+
+a {
+  color: #3498db; /* Link color matches button */
+  text-decoration: none;
+  transition: color 0.2s ease-in-out; /* Smooth hover effect */
+}
+
+a:hover {
+  color: #2980b9; /* Darker blue on hover */
+}
+
+  </style>
+  <link rel="icon" type="image/x-icon" href="{% static "transparent curiouker logo.png" %}">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h3>Curiouker</h3>
+      {%if messages %}
+      <ul>
+        {% for message in messages %}
+        <h1>{{ message }}</h1>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </header>
+    <main>
+      <form method="POST">
+        {% csrf_token %}
+        <label for="firstname">Username:</label>
+        <input type="text" id="username" name="username" placeholder="Enter your User name" required>
+        <label for="firstname">Name:</label>
+        <input type="text" id="firstname" name="firstname" placeholder="Enter your first name" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Create a strong password" required>
+        <label for="password">Confirm Password:</label>
+        <input type="password" id="password" name="retype_password" placeholder="Create a strong password" required>
+
+        <input type="submit">
+    </form>    
+    
+    </main>
+    <footer>
+      <p>Already a member? <a href="{% url 'loginpage' %}">login In here</a>.</p>
+    </footer>
+  </div>
+</body>
+</html>
